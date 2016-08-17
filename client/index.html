@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="format-detection" content="email=no"/>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport">
+        <title>来吧第50期</title>
+		<link rel="stylesheet" type="text/css" href="./common.css" />
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <script src="http://192.168.31.26:3000/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+		<div id="loginbox">
+			<div style="width:260px;margin:200px auto;">
+				请先输入你在直播群的昵称
+				<br/>
+				<br/>
+				<input type="text" style="width:180px;" placeholder="请输入用户名" id="username" name="username" />
+				<input type="button" style="width:50px;" value="提交" onclick="CHAT.usernameSubmit();"/>
+			</div>
+		</div>
+        <div id="chatbox" style="display:none;">
+            <div id="header">
+                <div style="line-height: 28px;color:#fff;">
+                    <span style="text-align:left;margin-left:10px;">直播</span>
+                    <span style="float:right; margin-right:10px;"><span id="showusername"></span> | 
+					<a href="javascript:;" onclick="CHAT.logout()" style="color:#fff;">退出</a></span>
+                </div>
+				<input type="text" id="cr_username" class="cr_username" value="" />
+            </div>
+            <div id="doc">
+				<div id="message" class="message">
+					<div id="onlinecount" style="background:#EFEFF4; font-size:12px; padding-top:10px; margin-left:10px; color:#666;">
+					</div>
+
+					<div class="blackbar"></div>
+				</div>
+            </div>
+			<div id="chat-footer">
+				<div class="input-box">
+					<div class="input-send talk-with">
+						<button class="sound sd_button"></button>
+						<pre contenteditable="true" type="text" id="content" name="content"></pre>
+						<button id="speak">按住 说话</button>
+						<span id="placeholder">互动时刻 点此发言</span>
+						<button type="button" class="brow" id="emoji"></button>
+						<button type="button" class="iconfont icon-jianpan keybord"></button>
+						<button type="button" class="add"></button>
+						<button class="fasong" id="mjr_send" onclick="CHAT.submit();" >发送</button>
+					</div>
+				</div>
+				<div class="cg_wrapper">
+					<div class="emoji_w upslow hide_block">
+						<div class="emojiRegion clearfix upslow" id="emojir">
+							<ul class="clearfix">
+								<li><img src="images/100.gif"/></li>
+								<li><img src="images/101.gif"/></li>
+								<li><img src="images/102.gif"/></li>
+								<li><img src="images/103.gif"/></li>
+								<li><img src="images/104.gif"/></li>
+								<li><img src="images/105.gif"/></li>
+								<li><img src="images/106.gif"/></li>
+								<li><img src="images/107.gif"/></li>
+								<li><img src="images/108.gif"/></li>
+								<li><img src="images/109.gif"/></li>
+
+								<li><img src="images/110.gif"/></li>
+								<li><img src="images/111.gif"/></li>
+								<li><img src="images/112.gif"/></li>
+								<li><img src="images/113.gif"/></li>
+								<li><img src="images/114.gif"/></li>
+								<li><img src="images/115.gif"/></li>
+								<li><img src="images/116.gif"/></li>
+								<li><img src="images/117.gif"/></li>
+								<li><img src="images/118.gif"/></li>
+								<li><img src="images/119.gif"/></li>
+
+								<li><img src="images/120.gif"/></li>
+								<li><img src="images/121.gif"/></li>
+								<li><img src="images/122.gif"/></li>
+								<li><img src="images/123.gif"/></li>
+								<li><img src="images/124.gif"/></li>
+								<li><img src="images/125.gif"/></li>
+								<li><img src="images/126.gif"/></li>
+								<li><img src="images/127.gif"/></li>
+								<li><img src="images/128.gif"/></li>
+								<li><img src="images/129.gif"/></li>
+
+								<li><img src="images/130.gif"/></li>
+								<li><img src="images/131.gif"/></li>
+								<li><img src="images/132.gif"/></li>
+								<li><img src="images/133.gif"/></li>
+								<li><img src="images/134.gif"/></li>
+								<li><img src="images/135.gif"/></li>
+								<li><img src="images/136.gif"/></li>
+								<li><img src="images/137.gif"/></li>
+								<li><img src="images/138.gif"/></li>
+								<li><img src="images/139.gif"/></li>
+
+								<li><img src="images/140.gif"/></li>
+								<li><img src="images/141.gif"/></li>
+								<li><img src="images/142.gif"/></li>
+								<li><img src="images/143.gif"/></li>
+								<li><img src="images/144.gif"/></li>
+								<li><img src="images/145.gif"/></li>
+								<li><img src="images/146.gif"/></li>
+								<li><img src="images/147.gif"/></li>
+								<li><img src="images/148.gif"/></li>
+								<li><img src="images/149.gif"/></li>
+
+								<li><img src="images/150.gif"/></li>
+								<li><img src="images/151.gif"/></li>
+								<li><img src="images/152.gif"/></li>
+								<li><img src="images/153.gif"/></li>
+								<li><img src="images/154.gif"/></li>
+								<li><img src="images/155.gif"/></li>
+								<li><img src="images/156.gif"/></li>
+								<li><img src="images/157.gif"/></li>
+								<li><img src="images/158.gif"/></li>
+								<li><img src="images/159.gif"/></li>
+
+								<li><img src="images/160.gif"/></li>
+								<li><img src="images/161.gif"/></li>
+								<li><img src="images/162.gif"/></li>
+								<li><img src="images/163.gif"/></li>
+								<li><img src="images/164.gif"/></li>
+								<li><img src="images/165.gif"/></li>
+								<li><img src="images/166.gif"/></li>
+								<li><img src="images/167.gif"/></li>
+								<li><img src="images/168.gif"/></li>
+								<li><img src="images/169.gif"/></li>
+
+								<li><img src="images/170.gif"/></li>
+								<li><img src="images/171.gif"/></li>
+								<li><img src="images/172.gif"/></li>
+								<li><img src="images/173.gif"/></li>
+								<li><img src="images/174.gif"/></li>
+								<li><img src="images/175.gif"/></li>
+								<li><img src="images/176.gif"/></li>
+								<li><img src="images/177.gif"/></li>
+								<li><img src="images/178.gif"/></li>
+								<li><img src="images/179.gif"/></li>
+
+								<li><img src="images/180.gif"/></li>
+								<li><img src="images/181.gif"/></li>
+								<li><img src="images/182.gif"/></li>
+								<li><img src="images/183.gif"/></li>
+								<li><img src="images/184.gif"/></li>
+								<li><img src="images/185.gif"/></li>
+								<li><img src="images/186.gif"/></li>
+								<li><img src="images/187.gif"/></li>
+								<li><img src="images/188.gif"/></li>
+								<li><img src="images/189.gif"/></li>
+
+								<li><img src="images/190.gif"/></li>
+								<li><img src="images/191.gif"/></li>
+								<li><img src="images/192.gif"/></li>
+								<li><img src="images/193.gif"/></li>
+								<li><img src="images/194.gif"/></li>
+								<li><img src="images/195.gif"/></li>
+								<li><img src="images/196.gif"/></li>
+								<li><img src="images/197.gif"/></li>
+								<li><img src="images/198.gif"/></li>
+								<li><img src="images/199.gif"/></li>
+							</ul>
+						</div>
+						<button class="del_emoji">删除</button>
+					</div>
+
+					<div class="add-function">
+						<button id="picture">照片</button>
+						<button id="notes">讲义图</button>
+						<button id="outline">大纲</button>
+						<button id="line-over">结束</button>
+						<button id="gag">禁言</button>
+					</div>
+				</div>
+			</div>
+        </div>
+		<section class="speak_pic">
+			<ul class="talk-notes-pic">
+				<li><img src="image/talk1.png" alt=""><span>1</span></li>
+				<li><img src="image/talk2.png" alt=""><span>2</span></li>
+				<li><img src="image/talk2.png" alt=""><span>3</span></li>
+				<li><img src="image/talk1.png" alt=""><span>4</span></li>
+				<li><img src="image/talk1.png" alt=""><span>5</span></li>
+				<li><img src="image/talk2.png" alt=""><span>6</span></li>
+				<li><img src="image/talk2.png" alt=""><span>7</span></li>
+				<li><img src="image/talk1.png" alt=""><span>8</span></li>
+				<li><img src="image/talk1.png" alt=""><span>9</span></li>
+				<li><img src="image/talk2.png" alt=""><span>10</span></li>
+				<li><img src="image/talk2.png" alt=""><span>11</span></li>
+				<li><img src="image/talk1.png" alt=""><span>12</span></li>
+			</ul>
+			<div class="send-talk-pic">
+				<button>发送第 <span></span> 张讲义图</button>
+			</div>
+		</section>
+		<section class="outline">
+			<ul class="outline-content">
+				<li>
+					<ol>
+						<li>三. 投资需要一颗稳定平常心</li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+						<li><p>1. 目前的投资环境分析环境分析</p></li>
+					</ol>
+				</li>
+			</ul>
+			<div class="send-talk-pic">
+				<button>发送</button>
+			</div>
+		</section>
+		<div class="Countdown" style="display:none">
+			<div class="timeGo">
+				<span>距离开始</span>
+				<div class="time-item">
+					<span id="day_show"><b>0</b>天</span>
+					<span id="hour_show"><b>0</b>小时</span>
+					<span id="minute_show"><b>0</b>分钟</span>
+					<span id="second_show"><b>0</b><span>秒</span></span>
+				</div>
+			</div>
+		</div>
+    </body>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<!--<script src="js/jquery.nicescroll.min.js"></script>-->
+<script type="text/javascript" src="js/client.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+//		$("#doc").niceScroll("#message",{
+//			cursorcolor:"#F00",
+//			cursoropacitymax:0.7,
+//			//boxzoom:true,
+//			touchbehavior:true
+//		});
+
+//此处必须防止在最下端。
+//var edt = document.getElementById("content");
+//if(edt.addEventListener){
+//	edt.addEventListener("paste",enterkey,false);
+//}else{
+//	edt.attachEvent("onpaste",pasteHandler);
+//}
+//--------------------------------------Handle----------------------------------------------
+
+$(function(){
+	//CHAT.dname();
+	addemoji();
+})
+</script>
+</html>
